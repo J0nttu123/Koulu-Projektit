@@ -28,19 +28,27 @@
                         <input type="text" name="osoite">
                         <ul></ul>
                         maa:<br>
-                        <input type="checkbox" name="suomi" value="suomi"> suomi<br>
-                        <input type="checkbox" name="muu" value="muu"> muu<br>
-                
+                        <select name="" id="">
+                        <option value=""></option>
+                        <option value="">Suomi</option>
+                        <option value="">Ruotsi</option>
+                        <option value="">Muu</option>
+                        </select> <br>
+                        Postinumero: <br>
+                        <input type="text" name="Postinumero" value=""> <br>
+                        sähköposti: <br>
+                        <input type="text" name="sähköposti" value=""> <br>
                     </div>
                     <div class="valinta">
                             <ul></ul>
                             sukupuoli:<br>
-                            <input type="checkbox" name="mies" value="mies"> mies<br>
-                            <input type="checkbox" name="nainen" value="nainen"> nainen<br>
+                            <input type="radio" name="sukupuoli" value="mies"> mies<br>
+                            <input type="radio" name="sukupuoli" value="nainen"> nainen<br>
                             <ul></ul>
                             kieli:<br>
                             <input type="checkbox" name="kieli" value="suomi"> suomi<br>
                             <input type="checkbox" name="kieli" value="muu"> muu<br>
+                            
                     </div>
                 
                     <div>
@@ -51,12 +59,13 @@
                     </div>
 
                 </form>
-                <div id="eresult" style="color:red;"></div>
+                <div id="result" style="color:red;"></div>
                 <script type="text/javascript">
                 function validation(){
                     var id = document.getElementById('id').value;
                     var psw = document.getElementById('psw').value;
                     var nimi = document.getElementById('nimi').value;
+                    var email = document.getElementById('email').value;
                     if(name=='' || password =='' || email=='') 
                     {
                         document.getElementById("eresult").innerHTML = "all fields required";
