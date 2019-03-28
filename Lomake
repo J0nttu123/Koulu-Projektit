@@ -32,6 +32,7 @@
 
                         Maa:<br>
                         <select>
+                                <option value=""></option>
                                 <option value="suomi">Suomi</option>
                                 <option value="ruotsi">Ruotsi</option>
                                 <option value="englanti">Englanti</option>
@@ -47,11 +48,11 @@
                     <div class="valinta">
 
                             Sukupuoli:<br>
-                            <input type="radio" name="nainen" value="mies" id="puoli"> mies<br>
+                            <input type="radio" name="nainen" value="mies"> mies<br>
                             <input type="radio" name="nainen" value="nainen"> nainen<br>
                             
                             Kieli:<br>
-                            <input type="radio" name="kieli" value="suomi" id="kieli"> suomi<br>
+                            <input type="radio" name="kieli" value="suomi"> suomi<br>
                             <input type="radio" name="kieli" value="muu"> muu<br>
                     </div>
                 
@@ -81,7 +82,7 @@
                         return false;
                     }
                     else if(psw.length<4){
-                        document.getElementById("eresult").innerHTML = "salsanan on oltava vähintään 4 merkkiä";
+                        document.getElementById("eresult").innerHTML = "salasanan on oltava vähintään 4 merkkiä";
                         return false;
                     }
                     else if(nimi.lengts<2){
