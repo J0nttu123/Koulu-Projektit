@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Form Esimerkki 1</title>
+    <title>Lomake</title>
     <style>
     * {
         box-sizing: border-box;
@@ -37,7 +37,7 @@
     </style>
 </head>
 <body>
-    <form class="my-form">
+    <form class="my-form" onsubmit="chechkNimi(event)">
 
         <div class="otsikko">
             <h1>Rekisteröitymislomake</h1>
@@ -109,11 +109,17 @@
     </form>
 
     <script>
-        function validation(e){
-
-            e.
-       
-    
+         function checkNimi(e){
+        e.preventDefault();
+        var nimi = document.getElementById('nimi').value;
+        var error = document.getElementById('nimi_error');
+        
+        if (nimi.length < 3) {
+           error.innerHTML = "Nimi taitaa olla liian lyhyt";
+        } else {
+            error.innerHTML = "";
+        }
+    }
     </script>
 </body>
 </html>
