@@ -34,10 +34,13 @@
     .kala {
         padding: 15px
     }
+    .error {
+        color: red;
+    }
     </style>
 </head>
 <body>
-    <form class="my-form" onsubmit="checkNimi(event)">
+    <form class="my-form" id="form" onsubmit="checkNimi(event)">
 
         <div class="otsikko">
             <h1>Rekisteröitymislomake</h1>
@@ -126,19 +129,15 @@
         var id = document.getElementById('posti').value;
         var error = document.getElementById('posti_error');
         
-        if (id.length < 5) {
+        if (id.length < 5) { 
            error.innerHTML = "Postinumerossa pitää olla 5 numeroa";
         } else {
             error.innerHTML = "";
         }
-
-        var nimi = document.getElementById('nimi').value;
-        var error = document.getElementById('nimi_error');
-        
-        if (nimi.length < 3) {
-           error.innerHTML = "Nimi taitaa olla liian lyhyt";
-        } else {
-            error.innerHTML = "";
+        document.getElementById("emailTxt").addEventListener("change", validateEmail(param));
+    
+        function validateEmail(email){
+        console.log(email);
         }
     }
     </script>
