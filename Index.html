@@ -37,7 +37,11 @@
     </style>
 </head>
 <body>
+<<<<<<< HEAD
     <form class="my-form" onsubmit="checkNimi(event)">
+=======
+    <form class="my-form" onsubmit="chechkNimi(event)">
+>>>>>>> 455c99efbec9486da3aaa063a70785eda1c36168
 
         <div class="otsikko">
             <h1>Rekisteröitymislomake</h1>
@@ -132,6 +136,14 @@
             error.innerHTML = "";
         }
 
+        var nimi = document.getElementById('nimi').value;
+        var error = document.getElementById('nimi_error');
+        
+        if (nimi.length < 3) {
+           error.innerHTML = "Nimi taitaa olla liian lyhyt";
+        } else {
+            error.innerHTML = "";
+        }
     }
     </script>
 </body>
