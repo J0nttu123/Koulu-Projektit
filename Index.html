@@ -15,6 +15,7 @@
         padding: 20px;
         margin: 50px auto;
         border: 3px solid rgb(0, 0, 0);
+        background-color: rgb(155, 232, 255);
         }
     .form-group {
         margin: 15px;
@@ -36,6 +37,9 @@
     }
     .error {
         color: red;
+    }
+    .validation-results { 
+        color: red; 
     }
     </style>
 </head>
@@ -87,8 +91,11 @@
         </div>
 
         <div class="form-group">
-                <label for="email">Sähköposti:</label>
-                <input type="text" name="email" id="email">
+                <label for="emailTxt">Sähköposti:</label>
+                <input id="emailTxt" type="text" onkeyup="myValidation(this.value)">
+                <div class="validation-results">
+                    <p id="regex"></p>
+                </div>
         </div>
 
         <div class="kala">
@@ -115,7 +122,8 @@
     </form>
 
     <script>
-         function checkNimi(e){
+
+        function checkNimi(e){
         e.preventDefault();
         var id = document.getElementById('id').value;
         var error = document.getElementById('id_error');
@@ -134,10 +142,18 @@
         } else {
             error.innerHTML = "";
         }
-        document.getElementById("emailTxt").addEventListener("change", validateEmail(param));
-    
-        function validateEmail(email){
-        console.log(email);
+        function myValidation(str){
+            if (regexEmail(str)) {
+                document.getElementById('regex').innerHTML = "Email on ok";
+            } else {
+                document.getElementById('regex').innerHTML = "Email on virheellinen";
+            }
+            
+        }
+        // Very simple regex
+        function regexEmail(email) {
+            var re = /^\S+@\S+[\.][0-9a-z]+$/;
+            return re.test(email);
         }
     }
     </script>
