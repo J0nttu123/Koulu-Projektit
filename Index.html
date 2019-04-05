@@ -73,15 +73,14 @@
         </div>
         
         <div class="form-group">
-                <label for="email">Maa:</label>
-                <select>              
-                    <option value="Maa">(Valitse maa)</option>
+                <label for="maa">Maa:</label>
+                <select name="maa" id="maa">              
+                    <option value="">(Valitse maa)</option>
                     <option value="Suomi">Suomi</option>
                     <option value="Ruotsi">Ruotsi</option>
                     <option value="Venäjä">Venäjä</option>
                     <option value="Muu">Muu</option>
                 </select>
-                <span id="maa_error" class="error"></span>
         </div>
 
         <div class="form-group">
@@ -100,6 +99,7 @@
                 <label for="email">Sukupuoli:</label>
                 <input type="radio" name="email" value="mies">Mies
                 <input type="radio" name="email" value="nainen">Nainen
+                <span id="email_error" class="error"></span>
         </div>
 
         <div class="kala">
@@ -173,7 +173,7 @@
             var nimi = document.getElementById('nimi').value;
             var error = document.getElementById('nimi_error');
             
-            if (nimi.length < 1) { 
+            if (nimi == "") { 
                 error.innerHTML = "Nimi on pakollinen";
             } else {
                 error.innerHTML = "";
@@ -183,24 +183,26 @@
             var osoite = document.getElementById('osoite').value;
             var error = document.getElementById('osoite_error');
             
-            if (osoite.length < 4) { 
+            if (osoite == "") { 
                 error.innerHTML = "Osoite on pakollinen";
             } else {
                 error.innerHTML = "";
             }
 
             //Maa
-            var osoite = document.getElementById('maa').value;
-            var error = document.getElementById('maa_error');
+            var maa = document.getElementById('maa').value;
             
-            if (osoite.length < 4) { 
-                error.innerHTML = "Maa on pakollinen";
+            if (maa == "") {
+            document.getElementById("error").innerHTML = "Maa pitää valia";
             } else {
-                error.innerHTML = "";
+            document.getElementById("error").innerHTML = "";
             }
 
-    
-    
+
+
+            
+            
+           
     }
 
 </script>
