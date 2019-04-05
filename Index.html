@@ -15,7 +15,7 @@
         padding: 20px;
         margin: 50px auto;
         border: 3px solid rgb(0, 0, 0);
-        background-color: rgb(155, 232, 255);
+        background-color: rgb(202, 255, 255);
         }
     .form-group {
         margin: 15px;
@@ -38,13 +38,10 @@
     .error {
         color: red;
     }
-    .validation-results { 
-        color: red; 
-    }
     </style>
 </head>
 <body>
-    <form class="my-form" id="form" onsubmit="checkNimi(event)">
+    <form class="my-form" id="form" onsubmit="checkForm(event)">
 
         <div class="otsikko">
             <h1>Rekisteröitymislomake</h1>
@@ -60,6 +57,7 @@
         <div class="form-group">
             <label for="email">Salasana:</label>
             <input type="text" name="email" id="salasana">
+            <span id="salasana_error" class="error"></span>
         </div>
 
         <div class="form-group">
@@ -71,6 +69,7 @@
         <div class="form-group">
                 <label for="email">Osoite:</label>
                 <input type="text" name="email" id="osoite">
+                <span id="osoite_error" class="error"></span>
         </div>
         
         <div class="form-group">
@@ -82,6 +81,7 @@
                     <option value="Venäjä">Venäjä</option>
                     <option value="Muu">Muu</option>
                 </select>
+                <span id="maa_error" class="error"></span>
         </div>
 
         <div class="form-group">
@@ -91,11 +91,9 @@
         </div>
 
         <div class="form-group">
-                <label for="emailTxt">Sähköposti:</label>
-                <input id="emailTxt" type="text" onkeyup="myValidation(this.value)">
-                <div class="validation-results">
-                    <p id="regex"></p>
-                </div>
+                <label for="email">Sähköposti:</label>
+                <input id="email" type="text" name="email">
+                <span id="email_error" class="error"></span>
         </div>
 
         <div class="kala">
@@ -121,41 +119,90 @@
         
     </form>
 
-    <script>
-
-        function checkNimi(e){
-        e.preventDefault();
-        var id = document.getElementById('id').value;
-        var error = document.getElementById('id_error');
-        
-        if (id.length < 6) {
-           error.innerHTML = "Käyttäjä ID pitää olla vähintään 6 merkkiä pitkä";
-        } else {
-            error.innerHTML = "";
-        }
-
-        var id = document.getElementById('posti').value;
-        var error = document.getElementById('posti_error');
-        
-        if (id.length < 5) { 
-           error.innerHTML = "Postinumerossa pitää olla 5 numeroa";
-        } else {
-            error.innerHTML = "";
-        }
-        function myValidation(str){
-            if (regexEmail(str)) {
-                document.getElementById('regex').innerHTML = "Email on ok";
-            } else {
-                document.getElementById('regex').innerHTML = "Email on virheellinen";
-            }
-            
-        }
+<script>
         // Very simple regex
         function regexEmail(email) {
             var re = /^\S+@\S+[\.][0-9a-z]+$/;
             return re.test(email);
         }
+
+        function checkForm(e){
+        e.preventDefault();
+        
+            //ID
+            var id = document.getElementById('id').value;
+            var error = document.getElementById('id_error');
+        
+            if (id.length < 6) {
+                error.innerHTML = "Käyttäjä ID pitää olla vähintään 6 merkkiä pitkä";
+            } else {
+                error.innerHTML = "";
+            }
+
+            //Posti
+            var posti = document.getElementById('posti').value;
+            var error = document.getElementById('posti_error');
+        
+            if (posti.length < 5) { 
+                error.innerHTML = "Postinumerossa pitää olla 5 numeroa";
+            } else {
+                error.innerHTML = "";
+            }
+
+            //Email
+            var email = document.getElementById('email').value;
+            var error = document.getElementById('email_error');
+
+            if (!regexEmail(email)){ 
+                error.innerHTML = "Sähköpostiosoitteen tulee olla sähköpostiosoitteen muotoinen";
+            } else {
+                error.innerHTML = "";
+            }
+
+            //Salasana
+            var salasana = document.getElementById('salasana').value;
+            var error = document.getElementById('salasana_error');
+            
+            if (salasana.length < 4) { 
+                error.innerHTML = "Salasana on liian lyhyt";
+            } else {
+                error.innerHTML = "";
+            }
+
+            //Nimi
+            var nimi = document.getElementById('nimi').value;
+            var error = document.getElementById('nimi_error');
+            
+            if (nimi.length < 1) { 
+                error.innerHTML = "Nimi on pakollinen";
+            } else {
+                error.innerHTML = "";
+            }
+
+            //Osoite
+            var osoite = document.getElementById('osoite').value;
+            var error = document.getElementById('osoite_error');
+            
+            if (osoite.length < 4) { 
+                error.innerHTML = "Osoite on pakollinen";
+            } else {
+                error.innerHTML = "";
+            }
+
+            //Maa
+            var osoite = document.getElementById('maa').value;
+            var error = document.getElementById('maa_error');
+            
+            if (osoite.length < 4) { 
+                error.innerHTML = "Maa on pakollinen";
+            } else {
+                error.innerHTML = "";
+            }
+
+    
+    
     }
-    </script>
+
+</script>
 </body>
 </html>
