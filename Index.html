@@ -41,7 +41,7 @@
     </style>
 </head>
 <body>
-    <form class="my-form" id="form" onsubmit="checkForm(event)">
+    <form class="my-form" name="my-form" id="form" onsubmit="checkForm(event)">
 
         <div class="otsikko">
             <h1>Rekisteröitymislomake</h1>
@@ -81,14 +81,13 @@
                     <option value="Venäjä">Venäjä</option>
                     <option value="Muu">Muu</option>
                 </select>
-        </div>
-                 <div id="error">
-                    <span id="maa_error" class="error"></span>
-                 </div>
+                <br><span id="maa_error" class="error"></span>
+            </div>
 
         <div class="form-group">
                 <label for="email">Postinumero:</label>
                 <input type="text" name="posti" id="posti">
+                
                 <span id="posti_error" class="error"></span>
         </div>
 
@@ -99,16 +98,17 @@
         </div>
 
         <div class="kala">
-                <label for="email">Sukupuoli:</label>
+                <label for="sukupuoli">Sukupuoli:</label>
                 <input type="radio" name="sukupuoli" value="mies">Mies
                 <input type="radio" name="sukupuoli" value="nainen">Nainen
-                <span id="email_error" class="error"></span>
+                <br><span id="sukupuoli_error" class="error"></span>
         </div>
+           
 
         <div class="kala">
                 <label for="email">Kieli:</label>
-                <input type="Radio" name="kieli" value="Suomi">Suomi
-                <input type="Radio" name="kieli" value="Muu">Muu
+                <input type="checkbox" name="kieli" value="Suomi">Suomi
+                <input type="checkbox" name="kieli" value="Muu">Muu
         </div>
 
         <div class="form-group">
@@ -196,21 +196,19 @@
             var maa = document.getElementById('maa').value;
             
             if (maa == "") {
-            document.getElementById("error").innerHTML = "Maa pitää valita";
+            document.getElementById("maa_error").innerHTML = "Maa pitää valita";
             } else {
-            document.getElementById("error").innerHTML = "";
+            document.getElementById("maa_error").innerHTML = "";
             }
 
             //Sukupuoli
-            var sukupuoli = document.getElementById('sukupuoli').value;
-            var error = document.getElementById('maa_error');
-            
-            if (sukupuoli == "") {
-            document.getElementById("error").innerHTML = "Sukupuoli pitää valita";
-            } else {
-            document.getElementById("error").innerHTML = "";
-            }
+            var sukupuoli = document.forms['my-form']['sukupuoli'].value;
 
+            if (sukupuoli == "") {
+            document.getElementById("sukupuoli_error").innerHTML = "Sukupuoli pitää valita";
+            } else {
+            document.getElementById("sukupuoli_error").innerHTML = "";
+            }
 
 
             
