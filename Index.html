@@ -106,9 +106,12 @@
            
 
         <div class="kala">
-                <label for="email">Kieli:</label>
-                <input type="checkbox" name="kieli" value="Suomi">Suomi
-                <input type="checkbox" name="kieli" value="Muu">Muu
+            <label for="kielitaito">Kielitaito:</label><br>
+            <input type="checkbox" name="kielitaito" id="suomi"><label for="suomi">Suomi</label><br>
+            <input type="checkbox" name="kielitaito" id="ruotsi"><label for="ruotsi">Ruotsi</label><br>
+            <input type="checkbox" name="kielitaito" id="englanti"><label for="englanti">Englanti</label><br>
+            <input type="checkbox" name="kielitaito" id="venäjä"><label for="venäjä">Venäjä</label><br>
+            <span class="error" id="kieli_error"></span><br>
         </div>
 
         <div class="form-group">
@@ -132,6 +135,13 @@
         function checkForm(e){
         e.preventDefault();
         
+             // Tyhjennetään error-kentät
+             var error_spans = document.getElementsByTagName('span');
+            
+            for (var x=0; x < error_spans.length; x++) {
+                error_spans[x].innerHTML = "";
+            }
+
             //ID
             var id = document.getElementById('id').value;
             var error = document.getElementById('id_error');
@@ -196,19 +206,33 @@
             var maa = document.getElementById('maa').value;
             
             if (maa == "") {
-            document.getElementById("maa_error").innerHTML = "Maa pitää valita";
+                document.getElementById("maa_error").innerHTML = "Maa pitää valita";
             } else {
-            document.getElementById("maa_error").innerHTML = "";
+                document.getElementById("maa_error").innerHTML = "";
             }
 
             //Sukupuoli
             var sukupuoli = document.forms['my-form']['sukupuoli'].value;
 
             if (sukupuoli == "") {
-            document.getElementById("sukupuoli_error").innerHTML = "Sukupuoli pitää valita";
+                document.getElementById("sukupuoli_error").innerHTML = "Sukupuoli pitää valita";
             } else {
-            document.getElementById("sukupuoli_error").innerHTML = "";
+                document.getElementById("sukupuoli_error").innerHTML = "";
             }
+
+            //Kielitaito
+            var kielitaito = document.forms['my-form']['kielitaito'];
+            var valittu = 0;
+            for (var i = 0; i<kielitaito.length; i++) {
+                console.log(kielitaito[i].checked);
+                if (kielitaito[i].checked == true) {
+                    valittu++;
+                }
+            }
+            if (valittu < 1) {
+                document.getElementById('kieli_error').innerHTML = "Valitse vähintään yksi kieli";
+            }
+
 
 
             
