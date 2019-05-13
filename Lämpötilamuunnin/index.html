@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lämpötilamuunnin</title>
+</head>
+<body>
+    
+    <h1>Lämpötilamuunnin</h1>
+   
+    <select id="valinta">
+        <option value="cf">Celcius->Fahrenheit</option>
+        <option value="ck">Celsius->Kelvin</option>
+        <option value="fc">Fahrenheit->Celcius</option>
+        <option value="fk">Fahrenheit->Kelvin</option>
+        <option value="kc">Kelvin->Celcius</option>
+        <option value="kf">Kelvin->Fahrenheit</option>
+    </select>
+    
+    <p>Syötä lämpötila:</p>
+    <input type="text" id="lampoTila">
+    <button type="button" onclick="muunna()">Muunna</button>
+
+    <form>
+    <br><input type="radio" name="tarkkuus" value="10">1 desimaali
+    <br><input type="radio" name="tarkkuus" value="100">2 desimaali
+    <br><input type="radio" name="tarkkuus" value="1000">3 desimaali
+    </form>
+
+    <p id="tulos"></p>
+    
+    <script> 
+        
+        function muunna() {
+            var x = document.getElementById("lampoTila").value;
+            var valinta = document.getElementById("valinta").value;
+            var desimaalit = document.querySelector('input[name="tarkkuus"]:checked').value;
+            var LT;
+            switch (valinta) {
+                case "cf":
+                    LT = x + " °C on " + cf(x,desimaalit) + " °F";
+                    break;
+                case "ck":
+                    LT = x + " °C on " + ck(x.desimaalit) + " °K";
+                    break;
+                case "fc":
+                    LT = x + " °F on " + fc(x,desimaalit) + " °C";
+                    break;
+                case "fk":
+                    LT = x + " °F on " + fk(x,desimaalit) + " °K";
+                    break;
+                case "kc":
+                    LT = x + " °K on " + kc(x,desimaalit) + " °C";
+                    break;
+                case "kf":
+                    LT = x + " °K on " + kf(x,desimaalit) + " °F";
+            }
+            document.getElementById("tulos").innerHTML = LT;
+            
+        }
+        function cf(c,tarkkuus) {
+            var f = (c) * 1.8 + 32;
+            f = pyorista(f,tarkkuus);
+            return f;
+        }
+        function ck(c,tarkkuus) {
+            var k = c + 273.15;
+            k = pyorista(k,tarkkuus);
+            return k;
+        }
+        function fc(f,tarkkuus) {
+            var c = (f - 32) / 1.8;
+            c = pyorista(c,tarkkuus);
+            return c;
+        }
+        function fk(f,tarkkuus) {
+            var k = (f + 459.67) / 1.8;
+            k = pyorista(k,tarkkuus);
+            return k;
+        }
+        function kc(k,tarkkuus) {
+            var c = k - 273.15;
+            c = pyorista(c,tarkkuus);
+            return c;
+        }
+        function kf(k,tarkkuus) {
+            var f = k * 1.8 - 459.67;
+            f = pyorista(f,tarkkuus)
+            return f;
+        }
+        function pyorista(n,tarkkuus) {
+            return Math.round(n * tarkkuus) / tarkkuus;
+        }
+    
+    </script>
+
+
+
+</body>
+</html>
