@@ -11,19 +11,28 @@
             background-size: 100%;
         }
         .kuva{
+            text-align: relative;
             text-align: center;
         }
         .otsikko{
+            text-align: relative;
             text-align: center;
             font-size: 30px;
             color: yellow;
         }
 
         .laskenta{
+            text-align: relative;
             text-align: center;
             font-size: 70px;
             color:yellow;
         }
+
+        .kuvat{
+            text-align: center;
+            
+        }
+        
     </style>
 
     <script src="skriptit.js"></script>
@@ -43,6 +52,11 @@
     <p id="laskenta"></p>
     </div>
 
+    <div class="kuvat">
+    <input type="image" onclick="kaksi()" src="img/2x.png" height="120px">
+    <input type="image" onclick="nelja()" src="img/4x.png" height="120px"> 
+    <input type="image" onclick="kymmenen()" src="img/5x.png" height="120px">    
+    </div>  
 
 </body>
 </html>
