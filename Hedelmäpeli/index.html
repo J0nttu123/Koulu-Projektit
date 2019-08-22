@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hedelmäpeli</title>
     <style>
+        body {
+            background-image: url("img/taustakuva.png");
+        }
         .otsikko{
             text-align: center;
             padding: 10px;
@@ -20,15 +23,21 @@
 
         .rahat{
             text-align:center;
+            right: 225px;
+            position: absolute;
+            top: 650px;
             width: 500px;
             padding: 20px;
             margin: 50px auto;
             border: 3px solid rgb(0, 0, 0);
-            background-color: rgb(202, 255, 255);
+            background-color: rgb(1, 248, 22);
         }
 
         .lukitse{
             text-align:center;
+            left: 400px;
+            position: absolute;
+            top: 250px;  
             width: 500px;
             padding: 20px;
             margin: 50px auto;
@@ -36,9 +45,15 @@
             background-color: rgb(50, 248, 0);
         }
         .pelaa{
-            right: 100px;
+            left: 420px;
             position: absolute;
-            top: 755px;         
+            top: 700px;         
+        }
+
+        .taulu{
+            right: 200px;
+            position: absolute;
+            top: 250px;
         }
     </style>
 </head>
@@ -67,8 +82,16 @@
     </div>
 
     <div class="pelaa">
-        <input type="image" onclick="" src="img/pelaa.png" height="120px">
-    </div>   
+        <input type="image" onclick="" src="img/pelaa.png" height="150px">
+    </div>
+
+    <div class="taulu">
+        <img src="img/taulu1.png" height="400" width="600">
+
+    </div>
+
+
+    <script src="skriptit.js"></script>
 
 </body>
 
