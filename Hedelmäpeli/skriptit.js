@@ -26,12 +26,3 @@ function pelaa() {
     // slot2();
     // slot3();
 }
-
-
-
-
-
-
-
-
-
