@@ -45,12 +45,7 @@
             margin: 50px auto;
             border: 3px solid rgb(0, 0, 0);
             background-color:lawngreen
-        }
-        .pelaa{
-            left: 420px;
-            position: absolute;
-            top: 700px;         
-        }
+        }     
 
         .taulu{
             right: 200px;
@@ -63,10 +58,38 @@
             color:chocolate
         }
 
+        .button {
+        left: 500px;
+        position: absolute;
+        top: 700px;    
+        display: inline-block;
+        padding: 15px 25px;
+        font-size: 120px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        color: rgb(60, 255, 1);
+        background-color: rgb(98, 0, 255);
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 9px rgb(23, 0, 226);
+        }
+
+        .button:hover {background-color: #3e8e41}
+
+        .button:active {
+        background-color: #ff0101;
+        box-shadow: 0 5px rgb(7, 3, 3);
+        transform: translateY(4px);
+        }
+
     </style>
 </head>
 <body>
     <div class="otsikko">HEDELMÄPELI</div>
+    
+    <button class="button" id="pelaa" onclick="pelaa()">Pelaa</button>
     
     <div class="lukitse">
 
@@ -90,10 +113,6 @@
             <input type="image" onclick="" src="img/1.png" height="100px" width="120px">
             <input type="image"  onclick="" src="img/2.png" height="100px" width="100px">
             <input type="image" onclick="" src="img/3.png" height="100px" width="100px">
-    </div>
-
-    <div class="pelaa">
-        <input type="image" id="pelaa" onclick="pelaa()" src="img/pelaa.png" height="150px">
     </div>
 
     <div class="taulu">

@@ -1,5 +1,10 @@
 var rahat = 50;
-var raha = document.getElementById('info');
+var slots = [0,0,0];
+
+var images = [
+    "omena.png",
+    "päärynä.png",
+    "kirsika.png"];
 
 function slot() {
     return Math.floor(Math.random() * 3);
@@ -14,6 +19,7 @@ function voitto(slot1, slot2, slot3) {
     return rahat;
 }
 
+
 function pelaa() {
 
     var n1 = slot();
@@ -22,13 +28,19 @@ function pelaa() {
     if (rahat < 1) {
         return;
     }
-    var kirsika = new Image(100,100); kirsika.src ="img/kirsika.png";
-    var omena = new Image(100,100); omena.src ="img/omena.png";
-    var päärynä = new Image(100,100); päärynä.src ="img/päärynä.png";
-    var imgObjects = [kirsika,omena,päärynä];
+      
+    var s1 = document.getElementById("slot1");
+    var s2 = document.getElementById("slot2");
+    var s3 = document.getElementById("slot3");
+    
+    s1.src = "img/"+images[n1];
+    s2.src = "img/"+images[n2];
+    s3.src = "img/"+images[n3];
+
     document.getElementById("rahat").innerHTML = voitto(n1, n2, n3);
 
-    // slot1();
-    // slot2();
-    // slot3();
+}
+
+function lukitus() {
+    
 }
