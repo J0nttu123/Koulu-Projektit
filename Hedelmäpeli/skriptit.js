@@ -1,5 +1,8 @@
 var rahat = 50;
 var slots = [0,0,0];
+var lukko1 = 0;
+var lukko2 = 0;
+var lukko3 = 0;
 
 var images = [
     "omena.png",
@@ -17,6 +20,7 @@ function voitto(slot1, slot2, slot3) {
         rahat = rahat-1;
     }
     return rahat;
+
 }
 
 
@@ -39,8 +43,40 @@ function pelaa() {
 
     document.getElementById("rahat").innerHTML = voitto(n1, n2, n3);
 
-}
+    if (lukko1 == 0) {
+        n1 = slot();
+    } else {
+        lukko1 = 0;
+    }
 
-function lukitus() {
+    if (lukko2 == 0) {
+        n2 = slot();
+    } else {
+        lukko2 = 0;
+    }
+
+    if (lukko3 == 0) {
+        n3 = slot();
+    } else {
+        lukko3 = 0;
+    }
     
 }
+
+function lukitus(s) {
+    if(s == 1){
+        lukko1 = 1;
+    }
+    if(s == 2){
+        lukko1 = 1;
+    }
+    if(s == 3){
+        lukko1 = 1;
+    }
+}
+
+function update(){
+
+}
+
+ 
