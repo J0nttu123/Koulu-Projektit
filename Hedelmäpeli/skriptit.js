@@ -1,6 +1,7 @@
 var rahat = 50;
 var slots = [0,0,0];
 var lukko1 = lukko2 = lukko3 = 0; 
+var n1, n2, n3;
 
 var images = [
     "omena.png",
@@ -25,21 +26,19 @@ function voitto(slot1, slot2, slot3) {
 function pelaa() {
 
     if (lukko1 == 0) {
-        slot1 = slot();
+        n1 = slot();
     }
         
 
     if (lukko2 == 0) {
-        slot2 = slot();
+        n2 = slot();
     }
     
    if (lukko3 == 0) {
-        slot3 = slot(); 
+        n3 = slot(); 
     }
 
-    var n1 = slot();
-    var n2 = slot();
-    var n3 = slot();
+   
        
     if (rahat < 1) {
         return;
@@ -54,7 +53,10 @@ function pelaa() {
     s3.src = "img/"+images[n3];
 
     document.getElementById("rahat").innerHTML = voitto(n1, n2, n3);
-    
+
+    lukko1 = lukko2 = lukko3 = 0;
+    return;
+
 }
 
 function lukitse(j) {
@@ -66,7 +68,7 @@ function lukitse(j) {
             lukko1 = 0;
         }
         console.log(lukko1);
-        vaihdaKuva(j);
+        vaihdaKuva(j);                                                                                                                  
     }
 
     if (j.id == "lukko2") {
@@ -102,6 +104,6 @@ function lukitse(j) {
             elem.dataset.lock = "false"; 
         }
 
-} 
+    } 
 
 }
