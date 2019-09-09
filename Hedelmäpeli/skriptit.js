@@ -1,8 +1,6 @@
 var rahat = 50;
 var slots = [0,0,0];
-var lukko1 = 0;
-var lukko2 = 0;
-var lukko3 = 0;
+var lukko1 = lukko2 = lukko3 = 0; 
 
 var images = [
     "omena.png",
@@ -26,9 +24,23 @@ function voitto(slot1, slot2, slot3) {
 
 function pelaa() {
 
+    if (lukko1 == 0) {
+        slot1 = slot();
+    }
+        
+
+    if (lukko2 == 0) {
+        slot2 = slot();
+    }
+    
+   if (lukko3 == 0) {
+        slot3 = slot(); 
+    }
+
     var n1 = slot();
     var n2 = slot();
     var n3 = slot();
+       
     if (rahat < 1) {
         return;
     }
@@ -42,41 +54,54 @@ function pelaa() {
     s3.src = "img/"+images[n3];
 
     document.getElementById("rahat").innerHTML = voitto(n1, n2, n3);
-
-    if (lukko1 == 0) {
-        n1 = slot();
-    } else {
-        lukko1 = 0;
-    }
-
-    if (lukko2 == 0) {
-        n2 = slot();
-    } else {
-        lukko2 = 0;
-    }
-
-    if (lukko3 == 0) {
-        n3 = slot();
-    } else {
-        lukko3 = 0;
-    }
     
 }
 
-function lukitus(s) {
-    if(s == 1){
-        lukko1 = 1;
+function lukitse(j) {
+
+    if (j.id == "lukko1") {
+        if (lukko1 == 0) {
+            lukko1 = 1;
+        } else {
+            lukko1 = 0;
+        }
+        console.log(lukko1);
+        vaihdaKuva(j);
     }
-    if(s == 2){
-        lukko1 = 1;
+
+    if (j.id == "lukko2") {
+        console.log(j.id)
+        if (lukko2 == 0) {
+            lukko2 = 1;
+        } else {
+            lukko2 = 0;
+        }
+        console.log(lukko2);
+        vaihdaKuva(j);
     }
-    if(s == 3){
-        lukko1 = 1;
+
+    if (j.id == "lukko3") {
+        console.log(j.id)
+        if (lukko3 == 0) {
+            lukko3 = 1;
+        } else {
+            lukko3 = 0;
+        }
+        console.log(lukko3);
+        vaihdaKuva(j);
     }
+
+    function vaihdaKuva(elem) {
+        console.log(elem);
+        if (elem.dataset.lock == 'false')   { 
+            document.getElementById(elem.id).src = "./img/lukitus1.png";
+            elem.dataset.lock = "true";
+        }
+        else {
+            document.getElementById(elem.id).src = "./img/lukitus2.png"
+            elem.dataset.lock = "false"; 
+        }
+
+} 
+
 }
-
-function update(){
-
-}
-
- 

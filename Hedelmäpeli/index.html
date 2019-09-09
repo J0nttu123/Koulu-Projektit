@@ -86,7 +86,7 @@
 
     </style>
 </head>
-<body onload="update()">
+<body>
     <div class="otsikko">HEDELMÄPELI</div>
     
     <button class="button" id="pelaa" onclick="pelaa()">Pelaa</button>
@@ -98,11 +98,11 @@
         <img id="slot3" src="img/päärynä.png" height="120px">
 
     <br><br>
-        <input type="image" id="lukko1" onclick="lukitus(1)" src="img/lukitus1.png" height="120px" width="120px">
-        <input type="image" id="lukko2" onclick="lukitus(2)" src="img/lukitus1.png" height="120px" width="120px">
-        <input type="image" id="lukko3" onclick="lukitus(3)" src="img/lukitus1.png" height="120px" width="120px">
+        <input type="image" id="lukko1" onclick="lukitse(this)" src="img/lukitus1.png" height="120px" width="120px">
+        <input type="image" id="lukko2" onclick="lukitse(this)" src="img/lukitus1.png" height="120px" width="120px">
+        <input type="image" id="lukko3" onclick="lukitse(this)" src="img/lukitus1.png" height="120px" width="120px">
     </div> 
-    
+   
     <div class="rahat">
         <p>
             Rahaa:
