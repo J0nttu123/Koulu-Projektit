@@ -2,6 +2,7 @@ var rahat = 50;
 var slots = [0,0,0];
 var lukko1 = lukko2 = lukko3 = 0; 
 var n1, n2, n3;
+var panos = 1;
 
 var images = [
     "omena.png",
@@ -37,8 +38,6 @@ function pelaa() {
    if (lukko3 == 0) {
         n3 = slot(); 
     }
-
-   
        
     if (rahat < 1) {
         return;
@@ -53,11 +52,24 @@ function pelaa() {
     s3.src = "img/"+images[n3];
 
     document.getElementById("rahat").innerHTML = voitto(n1, n2, n3);
+    document.getElementById("panos").innerHTML = 1;
 
     lukko1 = lukko2 = lukko3 = 0;
     return;
 
 }
+
+function panos(){
+ 
+}
+
+
+function update() {
+    document.getElementById("panos").innerHTML = 1;
+    document.getElementById("rahat").innerHTML = 50;
+
+}
+
 
 function lukitse(j) {
 
@@ -93,6 +105,24 @@ function lukitse(j) {
         vaihdaKuva(j);
     }
 
+    // if(lukko == 1){
+    //     document.getElementById("lukko1").classlist.add("./img/lukitus2.png");
+    // } else {
+    //     document.getElementById("lukko1").classlist.remove("./img/lukitus2.png");
+    // }
+
+    // if(lukko == 2){
+    //     document.getElementById("lukko2").classlist.add("./img/lukitus2.png");
+    // } else {
+    //     document.getElementById("lukko2").classlist.remove("./img/lukitus2.png");
+    // }
+
+    // if(lukko == 3){
+    //     document.getElementById("lukko3").classlist.add("./img/lukitus2.png");
+    // } else {
+    //     document.getElementById("lukko3").classlist.remove("./img/lukitus2.png");
+    // }
+
     function vaihdaKuva(elem) {
         console.log(elem);
         if (elem.dataset.lock == 'false')   { 
@@ -101,9 +131,13 @@ function lukitse(j) {
         }
         else {
             document.getElementById(elem.id).src = "./img/lukitus2.png"
-            elem.dataset.lock = "false"; 
+            elem.dataset.lock = "false";
+
         }
 
-    } 
+    }
 
+    
+
+    
 }
