@@ -60,7 +60,7 @@ function pelaa() {
 }
 
 function panos(){
- 
+    
 }
 
 
@@ -103,25 +103,8 @@ function lukitse(j) {
         }
         console.log(lukko3);
         vaihdaKuva(j);
+
     }
-
-    // if(lukko == 1){
-    //     document.getElementById("lukko1").classlist.add("./img/lukitus2.png");
-    // } else {
-    //     document.getElementById("lukko1").classlist.remove("./img/lukitus2.png");
-    // }
-
-    // if(lukko == 2){
-    //     document.getElementById("lukko2").classlist.add("./img/lukitus2.png");
-    // } else {
-    //     document.getElementById("lukko2").classlist.remove("./img/lukitus2.png");
-    // }
-
-    // if(lukko == 3){
-    //     document.getElementById("lukko3").classlist.add("./img/lukitus2.png");
-    // } else {
-    //     document.getElementById("lukko3").classlist.remove("./img/lukitus2.png");
-    // }
 
     function vaihdaKuva(elem) {
         console.log(elem);
@@ -130,7 +113,7 @@ function lukitse(j) {
             elem.dataset.lock = "true";
         }
         else {
-            document.getElementById(elem.id).src = "./img/lukitus2.png"
+            document.getElementById(elem.id).src = "./img/lukitus2.png";
             elem.dataset.lock = "false";
 
         }
