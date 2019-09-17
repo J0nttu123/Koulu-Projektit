@@ -3,6 +3,7 @@ var slots = [0,0,0];
 var lukko1 = lukko2 = lukko3 = 0; 
 var n1, n2, n3;
 var panos = 1;
+var saa_lukita = false;
 
 var images = [
     "omena.png",
@@ -54,8 +55,14 @@ function pelaa() {
     document.getElementById("rahat").innerHTML = voitto(n1, n2, n3);
     document.getElementById("panos").innerHTML = 1;
 
-    lukko1 = lukko2 = lukko3 = 0;
-    return;
+    if (lukko1 == 1 || lukko2 == 1 || lukko3 == 1){       
+        saa_lukita = false;
+        lukko1 = lukko2 = lukko3 = 0;
+    } else {
+        saa_lukita = true;
+    }
+       
+    update();
 
 }
 
@@ -63,24 +70,20 @@ function panos(){
     
 }
 
-
-function update() {
-    document.getElementById("panos").innerHTML = 1;
-    document.getElementById("rahat").innerHTML = 50;
-
-}
-
-
 function lukitse(j) {
+
+    if (saa_lukita == false) {
+        return;
+    }
 
     if (j.id == "lukko1") {
         if (lukko1 == 0) {
             lukko1 = 1;
         } else {
-            lukko1 = 0;
+            lukko1 = 0;    
         }
         console.log(lukko1);
-        vaihdaKuva(j);                                                                                                                  
+        vaihdaKuva(j, lukko1);                                                                                                                  
     }
 
     if (j.id == "lukko2") {
@@ -91,7 +94,7 @@ function lukitse(j) {
             lukko2 = 0;
         }
         console.log(lukko2);
-        vaihdaKuva(j);
+        vaihdaKuva(j,lukko2);
     }
 
     if (j.id == "lukko3") {
@@ -102,25 +105,55 @@ function lukitse(j) {
             lukko3 = 0;
         }
         console.log(lukko3);
-        vaihdaKuva(j);
+        vaihdaKuva(j,lukko3);
 
     }
+    
+}
 
-    function vaihdaKuva(elem) {
-        console.log(elem);
-        if (elem.dataset.lock == 'false')   { 
-            document.getElementById(elem.id).src = "./img/lukitus1.png";
-            elem.dataset.lock = "true";
-        }
-        else {
-            document.getElementById(elem.id).src = "./img/lukitus2.png";
-            elem.dataset.lock = "false";
+function vaihdaKuva(elem, lukko) {
+    console.log(elem);
+    if (lukko == 0)   { 
+        document.getElementById(elem.id).src = "./img/lukitus1.png";
+    }
+    else {
+        document.getElementById(elem.id).src = "./img/lukitus2.png";
+    }
 
-        }
+}
 
+function update() {
+
+    document.getElementById("panos").innerHTML = panos;
+    document.getElementById("rahat").innerHTML = rahat;
+
+    // Tarkista lukitus
+    let l1 = document.getElementById("lukko1");
+    let l2 = document.getElementById("lukko2");
+    let l3 = document.getElementById("lukko3");
+    
+    vaihdaKuva(l1,lukko1);
+    vaihdaKuva(l2,lukko2);
+    vaihdaKuva(l3,lukko3);
+
+    if (saa_lukita == false){
+        document.getElementById("lukko1").disabled = true;
+    } else {
+        document.getElementById("lukko1").disabled = false;
+    }
+
+    if (saa_lukita == false){
+        document.getElementById("lukko2").disabled = true;
+    } else {
+        document.getElementById("lukko2").disabled = false;
+    }
+
+    if (saa_lukita == false){
+        document.getElementById("lukko3").disabled = true;
+    } else {
+        document.getElementById("lukko3").disabled = false;
     }
 
     
 
-    
 }
