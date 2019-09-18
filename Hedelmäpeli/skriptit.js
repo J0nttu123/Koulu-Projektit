@@ -15,17 +15,22 @@ function slot() {
 }
 
 function voitto(slot1, slot2, slot3) {
-    if (slot1 == slot2 && slot2 == slot3) {
-    rahat = rahat + 5;
+    if (slot1 == slot2 && slot2 == slot3 && panos == 1) {
+        rahat = rahat + 5;
+    } else if (slot1 == slot2 && slot2 == slot3 && panos == 2) {
+        rahat = rahat + 10;
+    } else if (slot1 == slot2 && slot2 == slot3 && panos == 3) {
+        rahat = rahat + 15;
     } else {
-        rahat = rahat-1;
+        
     }
-    return rahat;
 
 }
 
 
 function pelaa() {
+
+    rahat = rahat - panos;
 
     if (lukko1 == 0) {
         n1 = slot();
@@ -61,13 +66,14 @@ function pelaa() {
     } else {
         saa_lukita = true;
     }
-       
-    update();
 
+    update();
+    
 }
 
-function panos(){
-    
+var asetaPanos = function(x){
+        panos = x;
+        update();
 }
 
 function lukitse(j) {
@@ -153,6 +159,8 @@ function update() {
     } else {
         document.getElementById("lukko3").disabled = false;
     }
+
+    
 
     
 
