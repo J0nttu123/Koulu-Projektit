@@ -73,6 +73,7 @@ function pelaa() {
 
 var asetaPanos = function(x){
         panos = x;
+        
         update();
 }
 
