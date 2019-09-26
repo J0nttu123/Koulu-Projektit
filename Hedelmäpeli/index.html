@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hedelmäpeli</title>
     <style>
         body {
             background-image: url("img/taustakuva.png");
+            background-size: 100%;
         }
-        .otsikko{
+        .glow{
             text-align: center;
             padding: 10px;
             margin: 100px;
@@ -44,7 +46,7 @@
             padding: 20px;
             margin: 50px auto;
             border: 3px solid rgb(0, 0, 0);
-            background-color:lawngreen
+            background-color:lawngreen;
         }     
 
         .taulu{
@@ -55,11 +57,12 @@
 
         p {
             font-size: 30px;
-            color:chocolate
+            color:rgb(19, 12, 6)
         }
+        
 
         .button {
-        left: 500px;
+        left: 550px;
         position: absolute;
         top: 700px;    
         display: inline-block;
@@ -74,6 +77,12 @@
         border: none;
         border-radius: 15px;
         box-shadow: 0 9px rgb(23, 0, 226);
+        font-size: 80px;
+        color: #fff;
+        text-align: center;
+        -webkit-animation: glow 1s ease-in-out infinite alternate;
+        -moz-animation: glow 1s ease-in-out infinite alternate;
+        animation: glow 1s ease-in-out infinite alternate;
         }
 
         .button:hover {background-color: #3e8e41}
@@ -84,10 +93,50 @@
         transform: translateY(4px);
         }
 
+        .glow {
+        font-size: 80px;
+        color: #fff;
+        text-align: center;
+        -webkit-animation: glow 1s ease-in-out infinite alternate;
+        -moz-animation: glow 1s ease-in-out infinite alternate;
+        animation: glow 1s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+        from {
+            text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+        }
+        to {
+            text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+        }
+        }
+
+       /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+        }
+
+        /* Modal Content/Box */
+        .modal-content {
+
+            height: 530px;
+            width: 500px;
+            margin: 0px auto;
+            position: absolute;
+            left: 0;
+        
+        }
+
     </style>
 </head>
 <body onload="update()">
-    <div class="otsikko">HEDELMÄPELI</div>
+    <h1 class="glow">HEDELMÄPELI</h1>
     
     <button class="button" id="pelaa" onclick="pelaa()">Pelaa</button>
     
@@ -120,6 +169,17 @@
     <div class="taulu">
         <img src="img/taulu1.png" id="taulu1" height="400" width="600">
     </div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <img src="img/source.gif" id="modalkuva"/>
+    </div>
+
+</div>
 
     <script src="skriptit.js"></script>
 

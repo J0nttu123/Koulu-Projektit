@@ -1,9 +1,10 @@
 var rahat = 50;
-var slots = [0,0,0];
 var lukko1 = lukko2 = lukko3 = 0; 
 var n1, n2, n3;
 var panos = 1;
 var saa_lukita = false;
+var modal = document.getElementById("myModal");
+var span = document.getElementsByClassName("close")[0];
 
 var images = [
     "omena.png",
@@ -11,24 +12,63 @@ var images = [
     "kirsika.png"];
 
 function slot() {
+    console.log()
     return Math.floor(Math.random() * 3);
 }
 
-function voitto(slot1, slot2, slot3) {
-    if (slot1 == slot2 && slot2 == slot3 && panos == 1) {
-        rahat = rahat + 5;
-    } else if (slot1 == slot2 && slot2 == slot3 && panos == 2) {
-        rahat = rahat + 10;
-    } else if (slot1 == slot2 && slot2 == slot3 && panos == 3) {
-        rahat = rahat + 15;
-    } else {
-        
-    }
+function voitto() {
 
+    // Omena
+    if (n1 == n2 && n2 == n3) {
+
+        rahat = rahat + panos;
+
+        if (n1 == 0) {
+            if (panos == 1){
+                rahat += 1;
+            } else if(panos == 2) {
+                rahat += 2;
+            } else if (panos == 3){
+                rahat += 3;
+            }
+            
+        // Päärynä
+        } else if (n1 == 1) {
+            if (panos == 1){
+                rahat += 2;
+            } else if(panos == 2) {
+                rahat += 4;
+            } else if (panos == 3){
+                rahat += 6;
+            }
+            
+        // Kirsikka
+        } else if (n1 == 2) {
+            if (panos == 1){
+                rahat += 3;
+            } else if(panos == 2) {
+                rahat += 6;
+            } else if (panos == 3){
+                rahat += 10;
+            }
+        }
+        modal.style.display = "block";
+        span.onclick = function() {
+            modal.style.display = "none";
+          }
+    }
+    
+    
+    update();
 }
 
-
 function pelaa() {
+
+    if (rahat < 1) {
+        return;
+    } else if (rahat < panos){
+        return;
+    }
 
     rahat = rahat - panos;
 
@@ -44,10 +84,6 @@ function pelaa() {
    if (lukko3 == 0) {
         n3 = slot(); 
     }
-       
-    if (rahat < 1) {
-        return;
-    }
       
     var s1 = document.getElementById("slot1");
     var s2 = document.getElementById("slot2");
@@ -57,8 +93,7 @@ function pelaa() {
     s2.src = "img/"+images[n2];
     s3.src = "img/"+images[n3];
 
-    document.getElementById("rahat").innerHTML = voitto(n1, n2, n3);
-    document.getElementById("panos").innerHTML = 1;
+    voitto();
 
     if (lukko1 == 1 || lukko2 == 1 || lukko3 == 1){       
         saa_lukita = false;
@@ -73,6 +108,14 @@ function pelaa() {
 
 var asetaPanos = function(x){
         panos = x;
+        if(panos == 1){
+            document.getElementById("taulu1").src = "img/taulu1.png"
+        }else if (panos == 2){
+            document.getElementById("taulu1").src = "img/taulu2.png"
+        }else if (panos == 3){
+            document.getElementById("taulu1").src = "img/taulu3.png"
+        }
+
         
         update();
 }
@@ -135,9 +178,9 @@ function update() {
     document.getElementById("rahat").innerHTML = rahat;
 
     // Tarkista lukitus
-    let l1 = document.getElementById("lukko1");
-    let l2 = document.getElementById("lukko2");
-    let l3 = document.getElementById("lukko3");
+    var l1 = document.getElementById("lukko1");
+    var l2 = document.getElementById("lukko2");
+    var l3 = document.getElementById("lukko3");
     
     vaihdaKuva(l1,lukko1);
     vaihdaKuva(l2,lukko2);
@@ -159,10 +202,6 @@ function update() {
         document.getElementById("lukko3").disabled = true;
     } else {
         document.getElementById("lukko3").disabled = false;
-    }
-
-    
-
-    
+    }  
 
 }
