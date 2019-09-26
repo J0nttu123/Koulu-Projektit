@@ -11,6 +11,10 @@ var images = [
     "päärynä.png",
     "kirsika.png"];
 
+modal.onclick = function() {
+    modal.style.display = "none";
+}  
+
 function slot() {
     console.log()
     return Math.floor(Math.random() * 3);
@@ -53,9 +57,7 @@ function voitto() {
             }
         }
         modal.style.display = "block";
-        span.onclick = function() {
-            modal.style.display = "none";
-          }
+        
     }
     
     
@@ -202,6 +204,8 @@ function update() {
         document.getElementById("lukko3").disabled = true;
     } else {
         document.getElementById("lukko3").disabled = false;
-    }  
+    }
+    
+    
 
 }
