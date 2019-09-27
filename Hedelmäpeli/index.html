@@ -11,6 +11,7 @@
             background-size: 100%;
         }
 
+
         .glow{
             text-align: center;
             padding: 10px;
@@ -130,12 +131,23 @@
             margin: 0px auto;
             position: absolute;
             left: 0;
-        
         }
+
+        /* @media only screen and (max-width: 600px){
+            .hedelmät{
+                width: 100%;
+            }   
+
+            .rahat {
+                width: 100%;
+            }
+        } */
 
     </style>
 </head>
 <body onload="update()">
+
+    <div class="container">
 
     <h1 class="glow">HEDELMÄPELI</h1>
     
@@ -155,6 +167,7 @@
     </div> 
    
     <div class="rahat">
+        
         <p>
             Rahaa:
             <span id="rahat"></span>
@@ -183,6 +196,8 @@
     </div>
 
     <script src="skriptit.js"></script>
+
+    </div>
 
 </body>
 
