@@ -6,11 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hedelmäpeli</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+        
         body {
             background-image: url("img/taustakuva.png");
             background-size: 100%;
         }
 
+        .container {
+            width: 100%;
+            max-width: 1500px;
+            margin: 0 auto;
+        }
 
         .glow{
             text-align: center;
@@ -26,12 +35,8 @@
 
         .rahat{
             text-align:center;
-            right: 225px;
-            position: absolute;
-            top: 650px;
-            width: 500px;
+            width: 100%;
             padding: 20px;
-            margin: 50px auto;
             border: 3px solid rgb(0, 0, 0);
             background-color: rgb(1, 248, 2.2);
             background-color: rgb(1, 248, 22);
@@ -40,20 +45,21 @@
 
         .hedelmät{
             text-align:center;
-            left: 400px;
-            position: absolute;
+            float: left;
             top: 250px;  
-            width: 500px;
+            width: 50%;
             padding: 20px;
-            margin: 50px auto;
+            margin: 0;
             border: 3px solid rgb(0, 0, 0);
             background-color:lawngreen;
         }     
 
         .taulu{
-            right: 200px;
-            position: absolute;
-            top: 250px;
+            width: 50%;
+            float: left;
+        }
+        .taulu img {
+            width: 100%;
         }
 
         p {
@@ -63,27 +69,26 @@
         
 
         .button {
-        left: 550px;
-        position: absolute;
-        top: 700px;    
-        display: inline-block;
-        padding: 15px 25px;
-        font-size: 120px;
-        cursor: pointer;
-        text-align: center;
-        text-decoration: none;
-        outline: none;
-        color: rgb(60, 255, 1);
-        background-color: rgb(98, 0, 255);
-        border: none;
-        border-radius: 15px;
-        box-shadow: 0 9px rgb(23, 0, 226);
-        font-size: 80px;
-        color: #fff;
-        text-align: center;
-        -webkit-animation: glow 1s ease-in-out infinite alternate;
-        -moz-animation: glow 1s ease-in-out infinite alternate;
-        animation: glow 1s ease-in-out infinite alternate;
+  
+            display: block;
+            padding: 15px 25px;
+            margin: 20px auto;
+            font-size: 120px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: rgb(60, 255, 1);
+            background-color: rgb(98, 0, 255);
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px rgb(23, 0, 226);
+            font-size: 80px;
+            color: #fff;
+            text-align: center;
+            -webkit-animation: glow 1s ease-in-out infinite alternate;
+            -moz-animation: glow 1s ease-in-out infinite alternate;
+            animation: glow 1s ease-in-out infinite alternate;
         }
 
         .button:hover {background-color: #3e8e41}
@@ -95,7 +100,7 @@
         }
 
         .glow {
-        font-size: 80px;
+        font-size: 80px; 
         color: #fff;
         text-align: center;
         -webkit-animation: glow 1s ease-in-out infinite alternate;
@@ -109,6 +114,20 @@
         }
         to {
             text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+        }
+        }
+
+        @media only screen and (max-width: 800px) {
+
+            .container {
+                width: 100%;
+            }
+
+        .taulu {
+            width: 100%;
+        }
+        .hedelmät {
+            width: 100%;
         }
         }
 
@@ -133,16 +152,6 @@
             left: 0;
         }
 
-        /* @media only screen and (max-width: 600px){
-            .hedelmät{
-                width: 100%;
-            }   
-
-            .rahat {
-                width: 100%;
-            }
-        } */
-
     </style>
 </head>
 <body onload="update()">
@@ -151,37 +160,39 @@
 
     <h1 class="glow">HEDELMÄPELI</h1>
     
-    <button class="button" id="pelaa" onclick="pelaa()">Pelaa</button>
-    
     <div class="hedelmät">
 
         <img id="slot1" src="img/kirsika.png" height="120px">
         <img id="slot2" src="img/omena.png" height="120px">
         <img id="slot3" src="img/päärynä.png" height="120px">
         
-    <br><br>
+        <br><br>    
+
         <input type="image" id="lukko1" onclick="lukitse(this)" src="img/lukitus1.png" height="120px" width="120px">
         <input type="image" id="lukko2" onclick="lukitse(this)" src="img/lukitus1.png" height="120px" width="120px">
         <input type="image" id="lukko3" onclick="lukitse(this)" src="img/lukitus1.png" height="120px" width="120px">
 
-    </div> 
-   
-    <div class="rahat">
+        <button class="button" id="pelaa" onclick="pelaa()">Pelaa</button>
+
+        <div class="rahat">
         
-        <p>
-            Rahaa:
-            <span id="rahat"></span>
-            Panos: 
-            <span id="panos"></span>
-        </p>
-            <input type="image" id="yksi" onclick="asetaPanos(1)" src="img/1.png" height="100px" width="120px">
-            <input type="image" id="kaksi" onclick="asetaPanos(2)" src="img/2.png" height="100px" width="100px">
-            <input type="image" id="kolme" onclick="asetaPanos(3)" src="img/3.png" height="100px" width="100px">
-            
-    </div>
+                <p>
+                    Rahaa:
+                    <span id="rahat"></span>
+                    Panos: 
+                    <span id="panos"></span>
+                </p>
+                    <input type="image" id="yksi" onclick="asetaPanos(1)" src="img/1.png" height="100px" width="120px">
+                    <input type="image" id="kaksi" onclick="asetaPanos(2)" src="img/2.png" height="100px" width="100px">
+                    <input type="image" id="kolme" onclick="asetaPanos(3)" src="img/3.png" height="100px" width="100px">
+                    
+            </div>
+
+    </div> 
 
     <div class="taulu">
-        <img src="img/taulu1.png" id="taulu1" height="400" width="600">
+        <img src="img/taulu1.png" id="taulu1" height="475">
+
     </div>
 
     <!-- The Modal -->
