@@ -5,20 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sikanoppapeli</title>
+    <style>
+        .container{
+            text-align: center;
+        }
+    
+    </style>
 </head>
 <body>
+    <div class="container">
+    
     <h1>Sikanoppapeli</h1>
 
-    <p>Pelaaja1<span id="pelaaja1"></span></p>
-    <p>Pelaaja2<span id="pelaaja2"></span></p>
+    <p>Pelaaja1<br><span id="pelaaja1"></span></p>
+    <p>Pelaaja2<br><span id="pelaaja2"></span></p>
 
     <button onclick="pelaa()">Pelaa</button>
 
-    <span id="dice" class="dice"></span>
+    <button onclick="vuoronVaihto()">Vuoron vaihto</button>
 
+    <br><br>
     <span id="pisteet"></span>
 
+    <br><br>
     <img id="noppa" src="img/noppa1.jpg" width="50px">
+
+    </div>
 
     <script src="skriptit.js"></script>
 </body>
