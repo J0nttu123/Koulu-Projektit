@@ -11,14 +11,18 @@ var images = [
 
 function pelaa(){
     let dice = Math.floor(Math.random() * 6) + 1;
+    let dice2 = Math.floor(Math.random() * 6) + 1;
     document.getElementById("noppa").src = "img/"+images[dice - 1];
-    pisteet += dice; 
+    document.getElementById("nopat").src = "img/"+images[dice2 - 1];
+    pisteet += dice + dice2; 
     document.getElementById("pisteet").innerHTML = pisteet;
 
     if (dice == 1 ){
       pisteet = 0;
       vuoronVaihto();
     }
+
+    if (dice)
    
 }
 
@@ -27,7 +31,7 @@ function vuoronVaihto(){
       
       if (pistetaulukko[vuoro] >= 100){
         pelaajat();
-        alert("win");
+        alert("voitto");
         document.getElementById("pelaa").disabled = true;
         document.getElementById("vaihda").disabled = true;   
         return;
