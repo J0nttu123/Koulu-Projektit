@@ -12,7 +12,7 @@
     
     </style>
 </head>
-<body>
+<body onload="pelaajat()">
     <div class="container">
     
     <h1>Sikanoppapeli</h1>
@@ -20,15 +20,18 @@
     <p>Pelaaja1<br><span id="pelaaja1"></span></p>
     <p>Pelaaja2<br><span id="pelaaja2"></span></p>
 
-    <button onclick="pelaa()">Pelaa</button>
+    <button id="pelaa" onclick="pelaa()">Pelaa</button>
 
-    <button onclick="vuoronVaihto()">Vuoron vaihto</button>
+    <button id="vaihda" onclick="vuoronVaihto()">Vuoron vaihto</button>
 
     <br><br>
     <span id="pisteet"></span>
 
     <br><br>
     <img id="noppa" src="img/noppa1.jpg" width="50px">
+
+    <br><br>
+    <span id="pelaaja"></span>
 
     </div>
 
