@@ -14,15 +14,22 @@ function pelaa(){
     let dice2 = Math.floor(Math.random() * 6) + 1;
     document.getElementById("noppa").src = "img/"+images[dice - 1];
     document.getElementById("nopat").src = "img/"+images[dice2 - 1];
-    pisteet += dice + dice2; 
-    document.getElementById("pisteet").innerHTML = pisteet;
+    
 
-    if (dice == 1 ){
+    if ((dice == 1 || dice2 == 1) && dice != dice2){
       pisteet = 0;
       vuoronVaihto();
+    } else if (dice == dice2) {
+      if (dice == 1 && dice2 == 1){
+        pisteet += 25;
+      } else {
+        pisteet += (dice + dice2) * 2;
+      }
+    } else {
+      pisteet += dice + dice2;
     }
-
-    if (dice)
+    
+    document.getElementById("pisteet").innerHTML = pisteet; 
    
 }
 
