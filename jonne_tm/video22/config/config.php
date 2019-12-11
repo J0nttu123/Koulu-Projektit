@@ -1,5 +1,5 @@
 <?php
-	define('ROOT_URL', 'http://localhost/phpsandbox/website8/');
+	define('ROOT_URL', 'http://localhost/jonne_tm/video22/');
 	define('DB_HOST', 'localhost');
 	define('DB_USER', 'root');
 	define('DB_PASS', '');

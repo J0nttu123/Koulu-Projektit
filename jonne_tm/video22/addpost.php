@@ -7,7 +7,7 @@
 		// Get form data
 		$title = mysqli_real_escape_string($conn, $_POST['title']);
 		$body = mysqli_real_escape_string($conn, $_POST['body']);
-		$author = mysqli_real_escape_string($conn,$_POST['author']);
+		$author = mysqli_real_escape_string($conn, $_POST['author']);
 
 		$query = "INSERT INTO posts(title, author,body) VALUES('$title', '$author', '$body')";
 
