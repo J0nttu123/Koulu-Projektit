@@ -11,7 +11,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="<?php echo ROOT_URL; ?>">Home</a></li>
+            <li><a href="<?php echo ROOT_URL; ?>">Viestiseinä</a></li>
             <li><a href="<?php echo ROOT_URL; ?>addpost.php">Lisää viesti</a></li>
           </ul>
         </div><!--/.nav-collapse -->

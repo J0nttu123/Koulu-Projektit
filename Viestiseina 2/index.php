@@ -16,13 +16,13 @@
 
 <?php include('inc/header.php'); ?>
 	<div class="container">
-		<h1>Posts</h1>
+		<h1>Viestit</h1>
 		<?php foreach($posts as $post) : ?>
 			<div class="well">
 				<h3><?php echo $post['aihe']; ?></h3>
-				<small>Created on <?php echo $post['pvm']; ?> by <?php echo $post['lähettäjä']; ?></small>
+				<small><?php echo $post['pvm']; ?><?php echo $post['lähettäjä']; ?></small>
 				<p><?php echo $post['viesti']; ?></p>
-			</div>
+			   </div>
 		<?php endforeach; ?>
 	</div>
 <?php include('inc/footer.php'); ?>
