@@ -2,7 +2,7 @@
 	require('config/config.php');
 	require('config/db.php');
 	// Create Query
-	$query = 'SELECT * FROM viestit ORDER BY pvm DESC';
+	$query = 'SELECT * FROM viestit ORDER BY id DESC';
 	// Get Result
 	$result = mysqli_query($conn, $query);
 	// Fetch Data

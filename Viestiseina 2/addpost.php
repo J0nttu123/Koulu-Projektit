@@ -36,16 +36,21 @@ function test_input($data) {
 		} else {
 			$viesti = test_input($_POST["viesti"]);
 		}
-
+		
 
 	
 		if (strlen($aihe) > 0 && strlen($lähettäjä) > 0 && strlen($viesti) > 0)	{
 
 			// Get form data
 			$aihe = mysqli_real_escape_string($conn, $aihe);
-			$viesti = mysqli_real_escape_string($conn, $_POST['viesti']);
-			$lähettäjä = mysqli_real_escape_string($conn, $_POST['lähettäjä']);
-			$query = "INSERT INTO viestit(aihe, lähettäjä, viesti) VALUES('$aihe', '$lähettäjä', '$viesti')";
+			$viesti = mysqli_real_escape_string($conn, $viesti);
+			$lähettäjä = mysqli_real_escape_string($conn, $lähettäjä);
+	
+			// Hae pvm php-funktiolla
+			date_default_timezone_set('Europe/Helsinki');
+			$pvm = date("Y-m-d G:i:s ");
+
+			$query = "INSERT INTO viestit (aihe, lähettäjä, viesti, pvm) VALUES('$aihe', '$lähettäjä', '$viesti', '$pvm')";
 			if(mysqli_query($conn, $query)){
 				header('Location: '.ROOT_URL.'');
 			} else {
