@@ -8,12 +8,27 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+    <?php if (!isset($_SESSION['email'])): ?>
       <li class="nav-item">
         <a class="nav-link <?php echo $curr_file == 'register.php' ? "active" : ""; ?>" href="register.php">Register</a>
       </li>
       <li class="nav-item">
         <a class="nav-link <?php echo $curr_file == 'login.php' ? "active" : ""; ?>" href="login.php">Login</a>
       </li>
+      <?php endif; ?>
+
+    <!-- Kirjautuneen käyttäjän valikko --> 
+    <?php if (isset($_SESSION['email'])): ?>
+      <li class="nav-item">
+        <a href="addpost.php" class="nav-link">Lisää viesti</a>
+      </li>
+      <li class="nav-item">
+        <a href="logout.php" class="nav-link">Kirjaudu ulos</a>
+      </li>
+    <?php endif; ?>
+
+
+
     </ul>
   </div>
 </nav>

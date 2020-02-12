@@ -21,6 +21,7 @@ if (isset($_POST['btn_login'])){
     if (count($rows)){
         $passwd = $rows[0]['passwd'];
         if ( password_verify($_POST['passwd'], $passwd) ) {
+            $_SESSION['email'] = $email;
             header('Location: index.php');
         } else {
             echo "Kirjautuminen ei onnistunut!";

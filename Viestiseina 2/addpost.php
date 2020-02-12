@@ -1,5 +1,10 @@
 <?php
 
+session_start();
+
+	if (!isset($_SESSION['email'])) {
+	}
+
 function test_input($data) {
 	$data = trim($data);
 	$data = stripslashes($data);

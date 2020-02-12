@@ -37,20 +37,15 @@ if ($_POST['passwd'] != $_POST['passwd2']) {
     $_SESSION['error'][] = "Salasanat eivät täsmää";
 }
 
+if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+    $_SESSION['error'][] = "Sähköpostiosoite ei ole oikein";
+    
+}
+
 if (isset($_SESSION['error'])) {
     header('Location: register.php');
     die();
 }
-
-$sql = "SELECT 'email', FROM 'users' WHERE 'email' = 'Email'='".$email."'";
-$result = $conn->query($sql);
-if($result->num_rows >= 1) {
-    echo "Email or Username already exist, try something else.";
-} else {
- // ....
-}
-
-
 
 
 // prepare and bind
