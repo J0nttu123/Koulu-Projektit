@@ -8,11 +8,11 @@ if (isset($_POST['btn_login'])){
 
     $email = trim($_POST['email']);
 
-    $stmt = $conn->prepare("SELECT id, email, passwd FROM users WHERE email = ?");
+    $stmt = $conn->prepare("SELECT id, email, passwd, admin FROM users WHERE email = ?");
     $stmt->bind_param('s',$email);
     $stmt->execute();
 
-    $stmt->bind_result($id, $email, $passwd);
+    $stmt->bind_result($id, $email, $passwd, $admin);
     $result = $stmt->get_result();
     $rows = $result->fetch_all(MYSQLI_ASSOC);
   
@@ -22,6 +22,7 @@ if (isset($_POST['btn_login'])){
         $passwd = $rows[0]['passwd'];
         if ( password_verify($_POST['passwd'], $passwd) ) {
             $_SESSION['email'] = $email;
+            $_SESSION['admin'] = $rows[0]['admin'];
             header('Location: index.php');
         } else {
             echo "Kirjautuminen ei onnistunut!";

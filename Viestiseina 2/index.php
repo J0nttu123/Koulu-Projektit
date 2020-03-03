@@ -28,6 +28,9 @@
 				<h3><?php echo $post['aihe']; ?></h3>
 				<small><?php echo $post['pvm']; ?><?php echo $post['lähettäjä']; ?></small>
 				<p><?php echo $post['viesti']; ?></p>
+				<?php if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1): ?>
+					<a href="delete.php?id=<?php echo $post['id'];?>">Poista</a>
+				<?php endif; ?>
 			   </div>
 		<?php endforeach; ?>
 	</div>
