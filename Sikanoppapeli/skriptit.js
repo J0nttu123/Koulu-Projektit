@@ -14,7 +14,6 @@ function pelaa(){
     let dice2 = Math.floor(Math.random() * 6) + 1;
     document.getElementById("noppa").src = "img/"+images[dice - 1];
     document.getElementById("nopat").src = "img/"+images[dice2 - 1];
-    
 
     if ((dice == 1 || dice2 == 1) && dice != dice2){
       pisteet = 0;
@@ -28,14 +27,14 @@ function pelaa(){
     } else {
       pisteet += dice + dice2;
     }
-    
+
     document.getElementById("pisteet").innerHTML = pisteet; 
-   
+
 }
 
 function vuoronVaihto(){
       pistetaulukko[vuoro] += pisteet;
-      
+
       if (pistetaulukko[vuoro] >= 100){
         pelaajat();
         alert("voitto");
@@ -45,16 +44,14 @@ function vuoronVaihto(){
       }
 
       vuoro = vuoro + 1;
-      
+
       if (vuoro > pistetaulukko.length - 1) {
         vuoro = 0;
       }
       pisteet = 0;
 
-      
-
       pelaajat();
-  
+
 }
 
 
@@ -67,14 +64,4 @@ function pelaajat(){
     }else if(vuoro == 1){
       document.getElementById("pelaaja").innerHTML = "Pelaajan2 vuoro"
     }
-  
 }
-
-
-
-
-
-
-
-
-
