@@ -51,7 +51,7 @@ if (isset($_SESSION['error'])) {
 // prepare and bind
 $stmt = $conn->prepare("INSERT INTO users (firstname, lastname, email, passwd)
                          VALUES (?, ?, ?, ?)");
-$stmt->bind_param("ssss", $firstname, $lastname, $email, $passwd,);
+$stmt->bind_param("ssss", $firstname, $lastname, $email, $passwd);
 
 
 
